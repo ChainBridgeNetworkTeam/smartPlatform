@@ -2,7 +2,7 @@
  * @Author: dianluyuanli-wp
  * @LastEditors: dianluyuanli-wp
  * @Date: 2021-10-30 16:25:23
- * @LastEditTime: 2021-11-09 07:01:55
+ * @LastEditTime: 2021-11-12 06:44:22
  */
 require("@nomiclabs/hardhat-waffle");
 
@@ -39,7 +39,11 @@ module.exports = {
       "contracts/mintWETH.sol": {
         version: "0.8.0",
         settings: { }
-      }
+      },
+      "contracts/swap.sol": {
+        version: "0.7.6",
+        settings: { }
+      },
     }
   },
   networks: {
