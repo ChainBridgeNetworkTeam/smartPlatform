@@ -1,0 +1,29 @@
+{
+  "name": "wp_smart",
+  "version": "1.0.0",
+  "description": "smart contract",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "comAndRun": "tsc Interface/index.tsx --resolveJsonModule && node Interface/index.js",
+    "onlyCompile": "tsc Interface/index.tsx --resolveJsonModule",
+    "start": "node Interface/index.js",
+    "point": "1"
+  },
+  "author": "xiaohuli",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.5.1",
+    "hardhat": "^2.6.7"
+  },
+  "dependencies": {
+    "@uniswap/sdk": "^3.0.3",
+    "@uniswap/v3-periphery": "^1.3.0",
+    "cluster": "^0.7.7",
+    "openzeppelin-solidity": "^4.3.2"
+  }
+}
