@@ -40,31 +40,24 @@ exports.__esModule = true;
  * @Author: dianluyuanli-wp
  * @LastEditors: dianluyuanli-wp
  * @Date: 2021-10-30 17:49:15
- * @LastEditTime: 2021-11-12 06:40:58
+ * @LastEditTime: 2021-11-13 14:16:15
  */
 var ethers_1 = require("ethers");
-//19
-var privateKey = '0xdf57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e';
+var ss_1 = require("../../otherBox/ss");
 var WETHAddress = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2';
 var WETH_ABI = ['function withdraw(uint wad) public'];
 function main() {
     return __awaiter(this, void 0, void 0, function () {
-        var provider, wallet, res, Contract, res2;
+        var provider, wallet, res;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    provider = new ethers_1.ethers.providers.JsonRpcProvider('http://127.0.0.1:8545/');
-                    wallet = new ethers_1.ethers.Wallet(privateKey, provider);
+                    provider = ethers_1.ethers.getDefaultProvider('goerli');
+                    wallet = new ethers_1.ethers.Wallet(ss_1.sec.georli, provider);
                     return [4 /*yield*/, wallet.sendTransaction({ to: WETHAddress, value: ethers_1.ethers.utils.parseEther('1.0') })];
                 case 1:
                     res = _a.sent();
                     console.log(res);
-                    Contract = new ethers_1.ethers.Contract(WETHAddress, WETH_ABI, provider);
-                    Contract.connect(wallet);
-                    return [4 /*yield*/, Contract.withdraw(ethers_1.ethers.utils.parseEther('0.1'))];
-                case 2:
-                    res2 = _a.sent();
-                    console.log(res2);
                     return [2 /*return*/];
             }
         });

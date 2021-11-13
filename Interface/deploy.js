@@ -40,7 +40,7 @@ exports.__esModule = true;
  * @Author: dianluyuanli-wp
  * @LastEditors: dianluyuanli-wp
  * @Date: 2021-10-30 17:49:15
- * @LastEditTime: 2021-11-11 07:08:34
+ * @LastEditTime: 2021-11-12 08:46:08
  */
 var ethers_1 = require("ethers");
 var fs = require('fs');
@@ -59,7 +59,8 @@ function main() {
                 case 0:
                     data = fs.readFileSync(process.argv[2], 'utf-8');
                     jsonData = JSON.parse(data);
-                    console.log('argument1: artifacts path \n arg2: net type');
+                    console.log('argument1: artifacts path \narg2: net type');
+                    console.log("arg1: " + process.argv[2] + ", arg2:" + process.argv[3]);
                     deployType = process.argv[3];
                     if (deployType === '-p') {
                         //  正式环境
@@ -77,7 +78,8 @@ function main() {
                         wallet = new ethers_1.ethers.Wallet(privateKey, provider);
                     }
                     factory = new ethers_1.ethers.ContractFactory(jsonData.abi, jsonData.bytecode, wallet);
-                    return [4 /*yield*/, factory.deploy()];
+                    console.log('begin deploy!');
+                    return [4 /*yield*/, factory.deploy('0xE592427A0AEce92De3Edee1F18E0157C05861564')];
                 case 1:
                     contract = _a.sent();
                     console.log(contract.address, 'address');
