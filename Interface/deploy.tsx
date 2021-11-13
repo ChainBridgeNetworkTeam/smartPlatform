@@ -2,7 +2,7 @@
  * @Author: dianluyuanli-wp
  * @LastEditors: dianluyuanli-wp
  * @Date: 2021-10-30 17:49:15
- * @LastEditTime: 2021-11-11 07:08:34
+ * @LastEditTime: 2021-11-12 08:46:08
  */
 import { ethers } from "ethers";
 const fs = require('fs');
@@ -22,7 +22,8 @@ async function main() {
     const data = fs.readFileSync(process.argv[2], 'utf-8');
     const jsonData = JSON.parse(data);
 
-    console.log('argument1: artifacts path \n arg2: net type');
+    console.log('argument1: artifacts path \narg2: net type');
+    console.log(`arg1: ${process.argv[2]}, arg2:${process.argv[3]}`)
     let provider, wallet;
 
     const deployType = process.argv[3];
@@ -42,7 +43,9 @@ async function main() {
 
     //  合约部署
     let factory = new ethers.ContractFactory(jsonData.abi, jsonData.bytecode, wallet);
-    let contract = await factory.deploy();
+    console.log('begin deploy!')
+    //  input swaprouter address
+    let contract = await factory.deploy('0xE592427A0AEce92De3Edee1F18E0157C05861564');
     console.log(contract.address, 'address');
     console.log(contract.deployTransaction.hash);
 
