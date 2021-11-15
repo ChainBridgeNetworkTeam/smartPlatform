@@ -2,9 +2,10 @@
  * @Author: dianluyuanli-wp
  * @LastEditors: dianluyuanli-wp
  * @Date: 2021-10-30 17:49:15
- * @LastEditTime: 2021-11-12 08:46:08
+ * @LastEditTime: 2021-11-14 07:20:20
  */
 import { ethers } from "ethers";
+import { sec } from '../otherBox/ss';
 const fs = require('fs');
 
 //19
@@ -15,8 +16,6 @@ const hAddredd = '0x1251129cfe52B685A6038fD3C50EbaC75Ce44c20';
 
 //  mainnet private key
 const mainPriviteKey = '';
-
-const geoliPrivateKey = '0xf97df4c7d3412bd607cb31e659bd30f557b85792bb128bde797341c8e3ecec7a';
 
 async function main() {
     const data = fs.readFileSync(process.argv[2], 'utf-8');
@@ -34,7 +33,7 @@ async function main() {
     } else if (deployType == '-g') {
         //  goerli环境
         provider = ethers.getDefaultProvider('goerli');
-        wallet = new ethers.Wallet(geoliPrivateKey, provider);
+        wallet = new ethers.Wallet(sec.georli, provider);
     } else {
         //  测试环境
         provider = new ethers.providers.JsonRpcProvider('http://127.0.0.1:8545/');
